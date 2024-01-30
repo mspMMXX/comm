@@ -11,6 +11,7 @@ struct ContentView: View {
     
     //MARK: - Properties
     @State private var inputText: String = ""
+    @State private var inputTextIsEmpty: Bool = true
     
     var body: some View {
         VStack {
@@ -29,8 +30,16 @@ struct ContentView: View {
                         .resizable()
                         .frame(width: 30, height: 30)
                 })
+                .foregroundColor(inputTextIsEmpty ? .gray : .green)
             }
             .padding(15)
+        }
+        .onChange(of: inputText) {
+            if inputText != "" {
+                inputTextIsEmpty = false
+            } else {
+                inputTextIsEmpty = true
+            }
         }
     }
 }
