@@ -17,7 +17,7 @@ struct ContentView: View {
         VStack {
             Spacer()
             HStack {
-                TextField("Text", text: $inputText)
+                TextField("Message", text: $inputText)
                     .padding(5)
                     .overlay(
                     RoundedRectangle(cornerRadius: 25)
@@ -30,6 +30,7 @@ struct ContentView: View {
                         .resizable()
                         .frame(width: 30, height: 30)
                 })
+                .disabled(inputTextIsEmpty ? true : false)
                 .foregroundColor(inputTextIsEmpty ? .gray : .green)
             }
             .padding(15)
